@@ -1,0 +1,92 @@
+h1, h2, h3 {
+	color: teal;
+	text-decoration: underline;
+	text-align: center;
+}
+
+h2.border{
+	border-style: dotted dashed solid double;
+}
+
+div {
+	background-color: #C3F1A0
+}
+
+p {
+	text-align: center;
+}
+
+#movetxt {
+	position: relative;
+	-webkit-animation: moving 5s infinite;
+	animation: moving 5s infinite;
+}
+		
+@-webkit-keyframes moving {
+	from {top: 0px;}
+	to {top: 1000px;}
+}
+
+@keyframes moving {
+	from {top: 0px;}
+	to {top: 1000px;}
+}
+
+li {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
+}
+
+#flash {
+    -webkit-animation-name: flash-animation;
+    -webkit-animation-duration: 120s;
+
+    animation-name: flash-animation;
+    animation-duration: 120s;
+}
+
+@-webkit-keyframes flash-animation {  
+    from { background: #FFB6AD; }
+    to   { background: #93BFFF; }
+}
+
+@keyframes flash-animation {  
+    from { background: #255FB2; }
+    to   { background: #9FB25E; }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+	background-color: #93BFFF;
+	background-image: url('/img/ignasi_pattern_s.png');
+	font-family:'Montserrat', sans-serif;
+}
+
+ul{
+	list-style: square;
+}
+
+ol {
+	list-style: cjk-heavenly-stem;
+}
+
+td {
+	font-size: .90rem;
+}
+
+tr {
+	font-size: .80rem;
+}
+
+a:hover {
+	color:#11FA03;
+}
+
+a:active {
+	color:#19CA22;
+}
+
