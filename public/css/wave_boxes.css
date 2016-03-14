@@ -1,0 +1,120 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.b{
+    border-style: dotted
+}
+
+.grad {
+    background: linear-gradient(to bottom right, #91EDFF, #7856B2);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.eye1{
+    position: relative;
+    left: 300px;
+}
+
+.sm{
+    position: relative;
+    left: 150px;
+}
+
+.sm1{
+    position: relative;
+    left: 300px;
+}
+
+.iu{
+    position: relative;
+    left: 500px;
+}
+
+.ii{
+    position: relative;
+    left: 350px;
+}
+
+.io{
+    position: relative;
+    left: 630px;
+}
+
+.ip{
+    position: relative;
+    left: 630px;
+}
+
+.i0{
+    position: relative;
+    left: 350px;
+}
+
+.i1{
+    position: relative;
+    left: 30px;
+}
+
+.i1a{
+    position: relative;
+    left: 550px;
+}
+
+.i2{
+    position: relative;
+    left: 60px;
+}
+
+.i2a{
+    position: relative;
+    left: 550px;
+}
+
+.i3{
+    position: relative;
+    left: 90px;
+}
+
+.i3a{
+    position: relative;
+    left: 470px;
+}
+
+.i4{
+    position: relative;
+    left: 120px;
+}
+
+.i4a{
+    position: relative;
+    left: 400px;
+}
+
+.i5{
+    position: relative;
+    left: 150px;
+}
+
+.i5a{
+    position: relative;
+    left: 470px;
+}
+
+.i6{
+    position: relative;
+    left: 180px;
+}
+
+.i7{
+    position: relative;
+    left: 210px;
+}
