@@ -1,0 +1,77 @@
+div {
+    border: 1px solid black;
+}
+
+a:visited{
+    color:#0DFFAC;
+}
+
+.box {
+    height: 48px;
+    width: 148px;
+    border: 1px #000;
+}
+
+.red {
+    background-color: red;
+    color:white;
+}
+
+.orange{
+    background-color: orange;
+    color:white;
+}
+
+.yellow{
+    background-color: yellow;
+    color:white;
+}
+
+.green{
+    background-color: green;
+    color:white;
+}
+
+.blue{
+    background-color: blue;
+    color:white;
+}
+
+.pink{
+    background-color: pink;
+    color:white;
+}
+
+p.small{
+    line-height:10px;
+}
+
+.indent1{
+    position: relative;
+    left: 30px;
+}
+
+.indent2{
+    position: relative;
+    left: 60px;
+}
+
+.indent3{
+    position: relative;
+    left: 90px;
+}
+
+.indent4{
+    position: relative;
+    left: 120px;
+}
+
+.indent5{
+    position: relative;
+    left: 150px;
+}
+
+.indent6{
+    position: relative;
+    left: 180px;
+}
