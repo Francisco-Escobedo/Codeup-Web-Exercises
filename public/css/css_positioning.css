@@ -1,0 +1,78 @@
+a:hover{
+    color:#0DFFAC;
+}
+
+.codearrow{
+    position: relative;
+    right: -30px;
+    top: -70px;
+
+}
+
+.coderibbon{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
+
+div{
+    font-size: small;
+}
+
+.pad{
+    padding: 0px 0px 50px 0px;
+    margin: 20px 20px 0px 20px;
+}
+
+.box {
+    height: 48px;
+    width: 48px;
+    border: 1px solid #000;
+}
+
+.red {
+    background-color: red;
+    color:white;
+}
+
+.orange{
+    background-color: orange;
+    color:white;
+}
+
+.yellow{
+    background-color: yellow;
+    color:white;
+}
+
+.green{
+    background-color: green;
+    color:white;
+}
+
+.blue{
+    background-color: blue;
+    color:white;
+}
+
+.pink{
+    background-color: pink;
+    color:white;
+}
+
+.indent{
+    position: relative;
+    left: 20px;
+}
+
+/*100 and -85 place horizontally*/
+.indent1{
+    position: relative;
+    left: 100px;
+    top: -85px;
+}
+
+.indent2{
+    position: relative;
+    top: 50px;
+}
