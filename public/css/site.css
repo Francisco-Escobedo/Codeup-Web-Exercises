@@ -1,0 +1,7 @@
+/* fancy header to apply blue and underlined styling */
+
+.fancy-header {
+    color: blue;
+
+    text-decoration: underline;
+}
