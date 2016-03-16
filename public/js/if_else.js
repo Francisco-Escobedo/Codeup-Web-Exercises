@@ -2,6 +2,7 @@
 // just know that the variable 'color' will end up with a random value from the colors array
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var color = colors[Math.floor(Math.random()*colors.length)];
+console.log (color);
 
 var favorite = 'indigo'; // TODO: change this to your favorite color from the list
 
@@ -21,7 +22,8 @@ if (color == "red") {
     console.log ("I do not know anything by that color")
 }
 
-var fav = (color == favorite) ? "Indigo!? That's my favorite color!" : "Too bad, this isn't my favorite color..."
+var fav = (color == favorite) ? "Indigo!? That's my favorite color!" : "Too bad, this isn't my favorite color...";
+console.log (fav);
 // TODO: When a color is encountered log a message that tells the color, and an object of that color.
 //       Example: Blue is the color of the sky.
 
