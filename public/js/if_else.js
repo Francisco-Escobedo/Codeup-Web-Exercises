@@ -7,18 +7,18 @@ var favorite = 'indigo'; // TODO: change this to your favorite color from the li
 
 // TODO: Create a block of if/else statements to check for every color except indigo and violet.
 
-if (color == 'red') {
-    message = "Fire hydrants are red";
-} else if (color =='orange') {
-    message = "Oranges are orange";
-} else if (color =='yellow') {
-    message = "The sun is yellow";
-} else if (color =='green') {
-    message = "The grass is green";
-} else if (color =='blue') {
-    message = "The ocean is blue";
+if (color == "red") {
+    console.log ("Fire hydrants are red");
+} else if (color =="orange") {
+    console.log ("Oranges are orange");
+} else if (color =="yellow") {
+    console.log ("The sun is yellow");
+} else if (color =="green") {
+    console.log ("The grass is green");
+} else if (color =="blue") {
+    console.log ("The ocean is blue");
 } else {
-    message = "I do not know anything by that color"
+    console.log ("I do not know anything by that color")
 }
 
 var fav = (color == favorite) ? "Indigo!? That's my favorite color!" : "Too bad, this isn't my favorite color..."
