@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Break Continue JS
+    </title>
+</head>
+<body>
+
+<script>
+"use strict";
+
+var rando;
+
+do {
+    rando = Math.floor((Math.random()*50)+1) ;
+} while (rando %2 == 0);
+console.log("Random odd number is:" + rando);
+
+var anotherOdd;
+
+for (var anotherOdd = 1; anotherOdd < 51; anotherOdd++){
+
+    if (anotherOdd %2 == 0){
+        continue;
+    }
+    if (anotherOdd == rando){
+        continue;
+    }
+
+    console.log('Here is an odd number:' + " " + anotherOdd);
+
+}
+
+
+
+</script>
+
+</body>
+</html>
