@@ -16,13 +16,16 @@ console.log (names)
 
 console.log("There are" + " " + names.length + " " + "names in the array");
 
-console.log(names[0])
+console.log("For loop of names is below:")
+for (var i=0; i < names.length; i++){
+    console.log(names[i])
+}
 
-console.log(names[1])
+console.log("For each loop of names is below:")
+names.forEach(function (element, index, array){
+    console.log(element);
 
-console.log(names[2])
-
-console.log(names[3])
+});
     
 })();
 
