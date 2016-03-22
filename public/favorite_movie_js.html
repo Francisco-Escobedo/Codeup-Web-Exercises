@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<script>
+
+(function() {
+"use strict";
+
+    var movies = [
+        ['The Wizard of Oz', 'Classics', 'G'],
+        [ 'The Third Man', 'Mystery and Suspense', 'Unrated' ],
+
+    ];
+
+var movie = ['The Wizard of Oz', 'The Third Man', 'Citizen Kane', 'All About Eve', 'The Godfather', 'Metropolis', 'The Fall', 'Inside Out', 'It Happened One Night', 'The Shining'];
+
+console.log("For loop of movie is below:")
+for (var i=0; i < movie.length; i++){
+    if (i == 6){
+        console.log("This is my favorite movie: The Fall")
+        continue;
+    }
+    console.log(movie[i])
+
+}
+
+})();
+
+</script>
+
+</body>
+</html>
