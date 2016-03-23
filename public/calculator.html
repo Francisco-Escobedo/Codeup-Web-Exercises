@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/calculator.css">
+    <title></title>
+</head>
+<body>
+
+<div id="calculator">
+    <textarea id="firstNum" row = "1" cols = "3" readonly></textarea>
+    <textarea id="operator" row = "1" cols = "1" readonly></textarea>
+    <textarea id="secondNum" row = "1" cols = "2" readonly></textarea>
+    <div>
+        <button data-number = "1" class = "numberButton firRow"> 1 </button>
+        <button data-number = "2" class = "numberButton firRow"> 2 </button>
+        <button data-number = "3" class = "numberButton firRow"> 3 </button>
+        <button data-operator = "+" class = "operatorButton firRow"> + </button> 
+    </div>
+    <button data-number = "4" class = "numberButton secRow"> 4 </button>
+    <button data-number = "5" class = "numberButton secRow"> 5 </button>
+    <button data-number = "6" class = "numberButton secRow"> 6 </button>
+    <button data-operator = "-" class = "operatorButton secRow"> - </button>
+    <button data-number = "7" class = "numberButton thiRow"> 7 </button>
+    <button data-number = "8" class = "numberButton thiRow"> 8 </button>
+    <button data-number = "9" class = "numberButton thiRow"> 9 </button>
+    <button data-operator = "*" class = "operatorButton thiRow"> * </button>
+    <button data-clear = "C" class = "fouRow"> C </button>
+    <button data-number = "0" class = "numberButton fouRow"> 0 </button>
+    <button data-return = "=" class = "fouRow"> = </button>
+    <button data-operator = "/" class = "operatorButton fouRow"> / </button>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+// When button is clicked, produces NUMBER
+var numberButtons = document.getElementsByClassName("numberButton");
+
+var numberPress = function (event){
+
+    var numberValue = this.getAttribute("data-number");
+    console.log(numberValue);
+    document.getElementById('firstNum').value += numberValue;
+    }
+
+// += adds a value instead of replacing the value
+
+for (var i=0; i < numberButtons.length; i++) {
+numberButtons[i].addEventListener('click', numberPress, false);
+}
+
+// When button is clicked, produces OPERATOR
+var operatorButtons = document.getElementsByClassName("operatorButton");
+
+var operatorPress = function (event){
+
+    var operatorValue = this.getAttribute("data-operator");
+    console.log(operatorValue);
+    document.getElementById('operator').value = operatorValue;
+
+    }
+
+for (var i=0; i < operatorButtons.length; i++) {
+operatorButtons[i].addEventListener('click', operatorPress, false);
+operatorButtons[i].addEventListener('click', validateLeft, false);
+}
+
+
+function validateLeft(){
+    var leftField = document.getElementById('firstNum').value;
+    if (leftField == null || leftField == "")
+    {
+        alert("Please enter first number of argument")
+        return false;
+    }
+
+}
+
+
+// global variable
+// need boolean value to denote if were talking about left of right.
+// when boolean value false -> go to left hand side, once we hit operator,
+// change value to true and send values into right hand side.
+// for right hand side if, else (go right)
+// in handler for operators, changes boolean to from true to false.
+
+})();
+</script>
+
+</body>
+</html>
