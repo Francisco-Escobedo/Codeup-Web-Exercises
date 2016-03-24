@@ -25,9 +25,9 @@
     <button data-number = "8" class = "numberButton thiRow"> 8 </button>
     <button data-number = "9" class = "numberButton thiRow"> 9 </button>
     <button data-operator = "*" class = "operatorButton thiRow"> * </button>
-    <button data-clear = "C" class = "fouRow"> C </button>
+    <button data-clear = "C" class = "clearButton fouRow"> C </button>
     <button data-number = "0" class = "numberButton fouRow"> 0 </button>
-    <button data-return = "=" class = "fouRow"> = </button>
+    <button data-equal = "=" class = "equalButton fouRow"> = </button>
     <button data-operator = "/" class = "operatorButton fouRow"> / </button>
 </div>
 
@@ -38,11 +38,18 @@
 // When button is clicked, produces NUMBER
 var numberButtons = document.getElementsByClassName("numberButton");
 
+var side = "left" 
+
+
 var numberPress = function (event){
 
     var numberValue = this.getAttribute("data-number");
     console.log(numberValue);
-    document.getElementById('firstNum').value += numberValue;
+    if (side == "left"){
+        document.getElementById('firstNum').value += numberValue;
+    } else { document.getElementById('secondNum').value +=numberValue;
+
+    }
     }
 
 // += adds a value instead of replacing the value
@@ -72,11 +79,32 @@ function validateLeft(){
     var leftField = document.getElementById('firstNum').value;
     if (leftField == null || leftField == "")
     {
-        alert("Please enter first number of argument")
+        alert("Please enter first number of argument");
         return false;
+    } else {
+        side = "right";    
+        }
     }
 
-}
+// var first = document.getElementById('firstNum').value
+
+// var operate = document.getElementById('operator').value
+
+// var second = document.getElementById('secondNum').value
+
+// var clearButtons = document.getElementsByClassName("clearButton");
+
+// var equalPress = function (event){
+
+//     alert ("equal pressed");
+//     var equalValue = eval(first, operate, second);
+//     console.log(equalValue);
+// }
+
+// clearButtons[0].addEventListener('click', equalPress, false);
+
+
+
 
 
 // global variable
