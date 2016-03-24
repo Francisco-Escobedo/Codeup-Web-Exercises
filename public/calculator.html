@@ -29,6 +29,7 @@
     <button data-number = "0" class = "numberButton fouRow"> 0 </button>
     <button data-equal = "=" class = "equalButton fouRow"> = </button>
     <button data-operator = "/" class = "operatorButton fouRow"> / </button>
+    <button data-number = "." class = "numberButton fifRow"> . </button>
 </div>
 
 <script>
@@ -120,6 +121,7 @@ var equalPress = function (event){
     document.getElementById("firstNum").value = result;
     document.getElementById("operator").value = "";
     document.getElementById("secondNum").value = "";
+    side = "left";
     }
 
  
@@ -137,7 +139,6 @@ var clearPress = function (event){
 }
 
 clearButtons[0].addEventListener('click', clearPress, false);
-
 
 
 })();
