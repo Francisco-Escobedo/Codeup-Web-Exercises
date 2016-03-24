@@ -86,33 +86,59 @@ function validateLeft(){
         }
     }
 
-// var first = document.getElementById('firstNum').value
+// declaring variables for manipulation
+var first;
 
-// var operate = document.getElementById('operator').value
+var operate;
 
-// var second = document.getElementById('secondNum').value
+var second;
 
-// var clearButtons = document.getElementsByClassName("clearButton");
+var result = "";
 
-// var equalPress = function (event){
+// creating function to store numbers from text boxes
 
-//     alert ("equal pressed");
-//     var equalValue = eval(first, operate, second);
-//     console.log(equalValue);
-// }
+var equalButtons = document.getElementsByClassName("equalButton");
 
-// clearButtons[0].addEventListener('click', equalPress, false);
+var equalPress = function (event){
+
+    first = document.getElementById("firstNum").value;
+
+    operate = document.getElementById("operator").value;
+
+    second = document.getElementById("secondNum").value;
+
+    if (operate == '+'){
+        result = (parseInt(first)+parseInt(second));
+    } else if (operate == '-'){
+        result = (first-second);
+    } else if (operate == '*'){
+        result = (first*second);
+    } else {
+        result = (first/second);
+    }
+    console.log(result);
+    document.getElementById("firstNum").value = result;
+    document.getElementById("operator").value = "";
+    document.getElementById("secondNum").value = "";
+    }
+
+ 
+
+equalButtons[0].addEventListener('click', equalPress, false);
+
+var clearButtons = document.getElementsByClassName("clearButton");
+
+var clearPress = function (event){
+    alert("Clearing Values");
+    document.getElementById("firstNum").value = "";
+    document.getElementById("operator").value = "";
+    document.getElementById("secondNum").value = "";
+    side = "left";
+}
+
+clearButtons[0].addEventListener('click', clearPress, false);
 
 
-
-
-
-// global variable
-// need boolean value to denote if were talking about left of right.
-// when boolean value false -> go to left hand side, once we hit operator,
-// change value to true and send values into right hand side.
-// for right hand side if, else (go right)
-// in handler for operators, changes boolean to from true to false.
 
 })();
 </script>
