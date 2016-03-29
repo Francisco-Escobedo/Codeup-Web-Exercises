@@ -16,7 +16,7 @@
     font-size:30px;
     letter-spacing:2px;
     color:000000;">
-    Simple Coded Calc.
+    Simple Calculator
     </span>
 </p>
 
@@ -27,6 +27,7 @@
     <textarea id="secondNum" row = "1" cols = "5" readonly></textarea>
 
     <!-- Creates number and operator buttons. Button style added with Bootstrap classes -->
+
     <button data-number = "1" class = "btn btn-default numberButton firRow"> 1 </button>
     <button data-number = "2" class = "btn btn-default numberButton firRow"> 2 </button>
     <button data-number = "3" class = "btn btn-default numberButton firRow"> 3 </button>
@@ -44,16 +45,19 @@
     <button data-equal = "=" class = "btn btn-success equalButton fouRow"> = </button>
     <button data-operator = "/" class = "btn btn-warning operatorButton fouRow"> / </button>
     <button data-number = "." class = "btn btn-info numberButton decimalRow"> . </button>
+    <button data-number = "-" class = "btn btn-info btn-xs numberButton negRow"> Neg </button>
+    <button data-operator = "^" class = "btn btn-info btn-xs operatorButton expRow"> Exp </button>
+
 </div>
 
 <script>
 (function(){
 "use strict";
 
+var side = "left" 
+
 // Sets "array" to reference classes of numberButton
 var numberButtons = document.getElementsByClassName("numberButton");
-
-var side = "left" 
 
 // On 'click' goes to numberButtons "array" and outputs data-number string into text box denoted by "side" global variable.
 var numberPress = function (event){
@@ -69,7 +73,7 @@ var numberPress = function (event){
     }
 // When button is with class of numberButton is pressed, produces NUMBER stored in data-number by the function numberPress.
 for (var i=0; i < numberButtons.length; i++) {
-numberButtons[i].addEventListener('click', numberPress, false);
+    numberButtons[i].addEventListener('click', numberPress, false);
 }
 
 // Sets "array" of elements operatorButton to variable operatorButtons
@@ -85,7 +89,6 @@ var operatorPress = function (event){
     if (leftField == null || leftField == "")
     {
         alert("Please enter first number of argument");
-        return false;
     } else {
         side = "right";    
         }
@@ -122,6 +125,8 @@ var equalPress = function (event){
         result = (first-second);
     } else if (operate == '*'){
         result = (first*second);
+    } else if (operate == '^'){
+        result = (Math.pow(first, second));
     } else {
         result = (first/second);
     }
@@ -138,7 +143,6 @@ equalButtons[0].addEventListener('click', equalPress, false);
 var clearButtons = document.getElementsByClassName("clearButton");
 
 var clearPress = function (event){
-    alert("Clearing Values");
     document.getElementById("firstNum").value = "";
     document.getElementById("operator").value = "";
     document.getElementById("secondNum").value = "";

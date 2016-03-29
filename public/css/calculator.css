@@ -69,3 +69,15 @@ body {
     top: 10px;
     left: 1px;
 }
+
+.negRow{
+    position: relative;
+    bottom: 90px;
+    left: 116px;
+}
+
+.expRow{
+    position: relative;
+    bottom: 53px;
+    left: 79px;
+}
