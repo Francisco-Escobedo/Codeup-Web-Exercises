@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map-canvas {
+            width: 770px;
+            height: 481px;
+        }
+    </style>
+</head>
+<body>
+    <!-- div to hold map -->
+    <div id="map-canvas"></div>
+
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Wm7YvviL8dFXivBh5hTrVPWzJBiq4QY"></script>
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+    (function() {
+        "use strict";
+
+        // Set our map options
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 12,
+
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.488104,
+                lng: -98.491726
+            }
+
+        };
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        // Create a lat and lng for restaurant position (positioning of marker after map generated)
+        var guajillos = { lat: 29.521188, lng: -98.506983 };
+        var southerleigh = {lat: 29.442799, lng: -98.480930};
+        var thaiDee = { lat: 29.499330, lng: -98.507830};
+        var green = {lat: 29.443814, lng: -98.479949};
+
+
+        // Adding the markers to our existing map
+        var guajillosmarker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: guajillos,
+            map: map
+        });
+
+        var southerleighMarker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: southerleigh,
+            map: map
+        });
+
+        var greenMarker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: green,
+            map: map
+        });
+
+        var thaiDeeMarker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: thaiDee,
+            map: map
+        });
+
+        //Listener for when Guajillo's marker is clicked
+        guajillosmarker.addListener('click', function() {
+            //Defines HTML in info window
+            var guajillosContentString = '<h1 id="firstHeading" class="firstHeading"> Guajillo\'s Shortcut to Mexico</h1>' + 
+            'Touted as San Antonio\'s only Mexico City Kitchen, Guajillo\'s is the Mex without the Tex. Delicious Mexican food reminiscent of that found in Central Mexico.' +
+            '<ol> <lh><strong> Recommended Menu Items</strong> <lh> <li> Milanesa </li> <li> Tacos Al Pastor </li> <li> Albondigas </li> <li> Enfrijoladas</li> <li> Tacos de Alambre </li> </ol>'
+
+            //Creates info window and calls on HTML content for Guajillos
+            var infowindow = new google.maps.InfoWindow({
+            content: guajillosContentString
+            });
+
+            infowindow.open(map, guajillosmarker);
+            
+        });
+
+        //Listener for when Southerleigh marker is clicked
+        southerleighMarker.addListener('click', function () {
+            //Defines HTML in info window
+            var southerleighContentString = '<h1 id="firstHeading" class="firstHeading"> Southerleigh</h1>' + 
+            'A modern take on Texas\'s cross-cultural cuisine. The on-premise brewery offers a rotating array of original recipie, craft batch beers from Berwer, Les Locke.' +
+            '<ol> <lh><strong> Recommended Menu Items</strong> <lh> <li> 44 Farms NY Strip </li> <li> Pan Seared Gulf Snapper </li> <li> Blackened Salt Water Catfish </li> <li> Loncito\'s Peaceful Pork Cutlets</li> <li> Whole Crispy Gulf Flounder</li> </ol>'
+
+            //Creates info window and calls on HTML content for Southerleigh
+            var infowindow = new google.maps.InfoWindow({
+                content: southerleighContentString
+            });
+
+            infowindow.open(map, southerleighMarker);
+
+        });
+
+        //Listener for when Green marker is clicked
+        greenMarker.addListener('click', function(){
+            //Defines HTML to be displayed in info window
+            var greenContentString = '<h1 id="firstHeading" class="firstHeading"> Green</h1>' + 
+            'San Antonio\'s Only 100% Vegetarian and Kosher Restaurant' +
+            '<ol> <lh><strong> Recommended Menu Items</strong> <lh> <li> Eggplant Parmesan </li> <li> Portabella Steak </li> <li> Sesame Chick-N </li> <li> Fajita Bowl</li> <li> Cece\'s Stir Fry</li> </ol>'
+
+            //Creates info window and calls on HTML content for Green
+            var infowindow = new google.maps.InfoWindow({
+                content: greenContentString
+            });
+
+            infowindow.open(map, greenMarker);
+
+        });
+
+        //Listener for when Thai Dee marker is clicked
+        thaiDeeMarker.addListener('click', function(){
+            //Defines HTML to be displayed in info window
+            var thaiDeeContentString = '<h1 id="firstHeading" class="firstHeading"> Thai Dee</h1>' + 
+            'Thai Dee\'s dishes include many herbs & spices that mother nature has to offer, which makes our meals delicious yet healthy!' +
+            '<ol> <lh><strong> Recommended Menu Items</strong> <lh> <li> Pad Thai </li> <li> Yellow Curry </li> <li> Basil Noodle </li> <li> Ginger Fish</li> <li> Three Delight</li> </ol>'
+
+            //Creates info window and calls on HTML content for Green
+            var infowindow = new google.maps.InfoWindow({
+                content: thaiDeeContentString
+            });
+
+            infowindow.open(map, thaiDeeMarker);
+
+        });
+
+
+
+
+
+    })();
+    </script>
+</body>
