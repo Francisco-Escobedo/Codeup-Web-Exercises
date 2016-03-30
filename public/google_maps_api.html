@@ -43,30 +43,38 @@
         var thaiDee = { lat: 29.499330, lng: -98.507830};
         var green = {lat: 29.443814, lng: -98.479949};
 
+        var guajilloImg = '/img/chili_pepper.png';
+        var southerleighImg = '/img/Southerleigh.png';
+        var greenImg = '/img/lettuce.png';
+        var thaiDeeImg = '/img/noodle_bowl.png';
 
         // Adding the markers to our existing map
         var guajillosmarker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: guajillos,
-            map: map
+            map: map,
+            icon: guajilloImg
         });
 
         var southerleighMarker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: southerleigh,
-            map: map
+            map: map,
+            icon: southerleighImg
         });
 
         var greenMarker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: green,
-            map: map
+            map: map,
+            icon: greenImg
         });
 
         var thaiDeeMarker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             position: thaiDee,
-            map: map
+            map: map,
+            icon: thaiDeeImg
         });
 
         //Listener for when Guajillo's marker is clicked
