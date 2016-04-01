@@ -49,6 +49,36 @@
 
 </dl>
 
+<h3> Deception Pass State Park, WA </h3>
+
+<ul>
+    <li>4,134 acres</li>
+    <li>33,900 feet of saltwater shoreline</li>
+    <li>174 varieties of birds</li>
+    <li>1.2 mi of ADA hiking trails</li>
+    <li>6 mi of horse trails</li>
+</ul>
+
+<h3>Eldorado State Park, CO </h3>
+
+<ul>
+    <li>Rock Climbing</li>
+    <li>Cross Country Skiing</li>
+    <li>Experienced best in winter months and summer weekdays</li>
+    <li>Towering sandstone cliffs</li>
+    <li>Mountain biking trails</li>
+</ul>
+
+<h3>Manzano Mountains State Park, NM </h3>
+
+<ul>
+    <li>Fishing</li>
+    <li>Bird-watching</li>
+    <li>Cross-country skiing</li>
+    <li>Hiking</li>
+    <li>Part of the same geological feature that formed the Sandia Mountains to the north</li>
+</ul>
+
 
 <script>
         
@@ -58,6 +88,12 @@
         $('#toggleInvisible').click(function(event){
             event.preventDefault();
             $('dd').toggleClass('invisible');
+        });
+
+        $("li:first-child").css('font-weight','bold');
+
+        $('li:first-child').click(function(event){
+            $('li').parent().addClass('invisible');
         });
     }); 
 
