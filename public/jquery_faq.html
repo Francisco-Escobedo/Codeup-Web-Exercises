@@ -87,13 +87,13 @@
     $(document).ready(function(){
         $('#toggleInvisible').click(function(event){
             event.preventDefault();
-            $('.invisible').fadeToggle(3000);
+            $('.invisible').slideToggle(3000);
         });
 
         $("li:first-child").css('font-weight','bold');
 
         $('h3').click(function(event){
-            $('ul').fadeToggle(3000);
+            $('ul').slideToggle(3000);
         });
     }); 
 
