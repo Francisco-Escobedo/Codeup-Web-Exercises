@@ -5,9 +5,10 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-    <h1><font face = "verdana">Please Enter Konami Code</font></h1>
+    <h1 class='heading'><font face = "verdana">Please Enter Konami Code</font></h1>
 
     <image src = "/img/konamicode.gif" alt = "The Code" id="konamiPic">
+
     <script>
         "use strict";
 
@@ -16,20 +17,27 @@
 
             $(document).keyup(function(code) {
 
-            konamikeys.push(code.keyCode);
+                konamikeys.push(code.keyCode);
 
-            //compares entered string to konami code
-            if ( konamikeys.toString().indexOf(konami) >= 0 ) {
+                //compares entered string to konami code
+                if ( konamikeys.toString().indexOf(konami) >= 0 ) {
 
-            $(document).unbind('keyup');
-    
-            // konami code worked
-            alert('You have added 30 lives!');
-            $('body').css('background-image', 'url(/img/contra.jpg');
-            $('body').append('<embed src="/sound/contra.mp3" autostart="true" hidden="true" loop="true">');
-            //hides konami picture
-            $('#konamiPic').hide();
-            }
+                $(document).unbind('keyup');
+        
+                // konami code worked
+                alert('You have added 30 lives!');
+
+                $('body').css({
+                    'background-image':'url(/img/contra.jpg',
+                    'background-attachment' : 'fixed',
+                    'background-size' : '100%'
+
+                });
+                // add timeout
+                $('body').append('<embed src="/sound/contra.mp3" autostart="true" hidden="true" loop="true">');
+                //hides konami picture
+                $('#konamiPic, .heading').hide();
+                }
 
             });
 
