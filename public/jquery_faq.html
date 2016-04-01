@@ -87,13 +87,13 @@
     $(document).ready(function(){
         $('#toggleInvisible').click(function(event){
             event.preventDefault();
-            $('dd').toggleClass('invisible');
+            $('.invisible').toggle();
         });
 
         $("li:first-child").css('font-weight','bold');
 
         $('li:first-child').click(function(event){
-            $('li').parent().addClass('invisible');
+            $('li').parent().toggle();
         });
     }); 
 
