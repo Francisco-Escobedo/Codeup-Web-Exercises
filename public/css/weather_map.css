@@ -1,0 +1,10 @@
+.blocking {
+    display: inline-block;
+    border: solid 1px;
+    border-radius: 75px;
+    margin: 10px;
+    width: 200px; 
+    text-align: center;
+    position: relative;
+    left: 40px;
+}

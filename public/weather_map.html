@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map-canvas {
+            width: 770px;
+            height: 481px;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/weather_map.css">
+</head>
+<body>
+
+    <h1> Weather Application </h1>
+
+    <!-- Form to enter new lat and lng -->
+    <form style="padding: 0px 0px 20px 0px" method="post" action="weather_form">
+        <input placeholder="Latitude" type="text" name="lat" id="latitude"><br>
+        <input placeholder="Longitude" type="text" name="lng" id="longitude"><br>
+    </form>
+        <button style="margin: 0px 0px 20px 0px" type="button" id="submit"> Submit </button>
+
+    <!-- div to hold map -->
+    <div id="map-canvas"></div>
+
+    <div style="width: 800px;">
+    <div id="forecast"></div>
+    <br style="clear: left;" />
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <!-- Load the Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Wm7YvviL8dFXivBh5hTrVPWzJBiq4QY"></script>
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+    (function() {
+        "use strict";
+
+        var latitude = ('29.4241');
+
+        var longitude = ('-98.4936');
+
+        var locationHandler = function(event) {
+
+        $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+            APPID: "aeee7dc54a3111bd38e9660f2e193f82",
+            lat: latitude,
+            lon: longitude,
+            units: "imperial",
+            cnt: 3
+        }).done(function(data) {
+            console.log(data);
+                $('#forecast').html('');
+            for (var i = 0 ; i < data.list.length; i++) {
+                var div = $('<div>');
+                div.addClass('blocking');
+                div.append('<p>' + data.list[i].temp.min + '/' + data.list[i].temp.max + '</p>');
+                div.append('<p>' + '<img src= "http://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png">' + '</p>');
+                div.append('<p>' + data.list[i].weather[0].main + '</p>');
+                div.append('<p>' + 'Humidity: ' + data.list[i].humidity + '</p>');
+                div.append('<p>' + 'Wind: ' + data.list[i].speed + ' mph' + '</p>');
+                div.append('<p>' + 'Pressure: ' + data.list[i].pressure + '</p>');
+                $('#forecast').append(div);
+            };
+
+        });
+
+        };
+
+        // Set our map options
+        var mapOptions = {
+            
+            // Set the zoom level
+            zoom: 10,
+
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.4241,
+                lng: -98.4936
+            }
+
+        };
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        // Calls weather forecast
+        locationHandler();
+
+        $('#submit').click(function(){
+            latitude = parseFloat($('#latitude').val());
+            longitude = parseFloat($('#longitude').val());
+            console.log(latitude);
+            console.log(longitude);
+            locationHandler();
+            mapOptions = {
+                zoom: 10,
+
+                center: {
+                    lat: latitude,
+                    lng: longitude
+                }
+            };
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        });
+
+    })(); 
+
+    </script>
+</body>
+
