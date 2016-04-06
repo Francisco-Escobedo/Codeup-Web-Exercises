@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<h1 class="container">Pancho's Materialize Blog</h1>
+<h1 class="container">Pancho's Blog</h1>
 
 <div class="container grid-example col s12 m6" id="posts">
 </div>
@@ -23,7 +23,7 @@
 
 <script>
 (function() {
-    $.ajax("/data/blog.json").done(function(post) { 
+    $.ajax("http://scrappr.io/icemancast/api/codeup/blog").done(function(post) { 
         for (var i = 0 ; i < post.length; i++) {
             var di = $('<div>');
             di.append('<h3>' + post[i].title + '</h3>');
