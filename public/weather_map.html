@@ -90,22 +90,43 @@
         // Calls weather forecast
         locationHandler();
 
+        var myLatlng = {lat: 29.4241, lng: -98.4936};
+
+        var marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            draggable: true,
+            position: myLatlng, 
+            map: map
+        });
+
+        var dragListen = function(event) {
+            google.maps.event.addListener(marker, 'dragend', function () {
+                    document.getElementById("latitude").value = this.getPosition().lat();
+                    document.getElementById("longitude").value = this.getPosition().lng();
+                });
+        };
+
+        dragListen();
+
+        marker.setMap(map);
+
         $('#submit').click(function(){
             latitude = parseFloat($('#latitude').val());
             longitude = parseFloat($('#longitude').val());
+            myLatlng = {lat: latitude, lng: longitude};
             console.log(latitude);
             console.log(longitude);
             locationHandler();
-            mapOptions = {
-                zoom: 10,
-
-                center: {
+            var newCenter = {
                     lat: latitude,
                     lng: longitude
-                }
-            };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        });
+                };
+            map.setCenter(newCenter);
+            marker.setPosition(newCenter);
+
+            dragListen();
+
+            });
 
     })(); 
 
