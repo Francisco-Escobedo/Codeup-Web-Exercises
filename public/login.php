@@ -1,6 +1,19 @@
 <?php
 
-// exit();
+$error = '';
+
+if (!isset($_POST['username']) && !isset($_POST['password'])){
+    $username = '';
+    $password = '';
+} else {
+    if ($_POST['username'] == 'guest' & $_POST['password'] == 'password'){
+        header('location: authorized.php');
+        exit();
+    } else {
+        $error = 'login failed';
+    }
+}
+
 
 ?>
 
@@ -11,7 +24,7 @@
 </head>
 <body>
 
-<form action="authorized.php" method="POST">
+<form method="POST">
 
     <label>Username</label>
 
@@ -20,6 +33,8 @@
     <label>Password</label>
 
     <div><input type="password" name="password"></div> <br>
+
+    <div><font color="red"><?= $error ?></font><div>
 
     <input type="submit">
 
