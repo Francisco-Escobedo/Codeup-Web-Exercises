@@ -1,0 +1,28 @@
+
+var myComputer = {
+    users: ['codeup'].
+}
+
+showUsers: function(){
+    console.log(this.user)
+},
+
+addUser: function(user){
+    this.user.push(user);
+},
+
+removeUser:function(user){
+    var index = this.user.indexOf(user);
+    if(index > -1){
+        this.user.splice(index, 1);
+    } else {
+        console.log('User' + user + ' does not exist');
+    }
+}
+
+
+myComputer.ShowUsers(Zach);
+
+myComputer.addUser(Isaac);
+
+

@@ -2,40 +2,87 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title> 3-Day Weather Forecast </title>
     <style type="text/css">
         #map-canvas {
-            width: 770px;
+            width: 920px;
             height: 481px;
         }
     </style>
-    <link rel="stylesheet" href="/css/weather_map.css">
-</head>
-<body>
 
-    <h1> Weather Application </h1>
+    <link rel="icon" href="/img/weatheri.png">
+
+    <link rel="stylesheet" href="/css/weather_map.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize JS -->
+    <script src="/js/materialize.min.js"></script>
+
+</head>
+<body background="/img/weather.png">
+
+    <nav class="indigo">
+        <div class="nav-wrapper container">
+          <a href="#" class="brand-logo left">3-Day Weather Forecast</a>
+        </div>
+    </nav>
+
+    <div class="container">
 
     <p id="locationName"></p>
 
     <!-- Form to enter new lat and lng -->
-    <form style="padding: 0px 0px 20px 0px" method="post" action="weather_form">
-        <input placeholder="Latitude" type="text" name="lat" id="latitude"><br>
-        <input placeholder="Longitude" type="text" name="lng" id="longitude"><br>
+    <form style="padding: 0px 0px 20px 0px" method="post" action="weather_form" class="col s12">
+        <div class="input-field col s6">
+            <input placeholder="29.4241" type="text" name="lat" id="latitude" class="validate">
+            <label for="latitude"><b>Latitude</b></label>
+        </div>
+        <br>
+        <div class="input-field col s6">
+            <input placeholder="-98.4936" type="text" name="lng" id="longitude">
+            <label for="longitude"><b>Longitude</b></label>
+        </div>
+        <br>
     </form>
-        <button style="margin: 0px 0px 20px 0px" type="button" id="submit"> Submit </button>
 
-    <!-- div to hold map -->
-    <div id="map-canvas"></div>
+    <!-- Submit lat and lng button -->
+    <div>
+        <button class="waves-effect waves-light btn indigo z-depth-5" style="margin: 0px 0px 30px 0px" type="button" id="submit"> Submit </button>
+    </div>
 
+    <!-- div to hold forecast -->
     <div id="forecast"></div>
 
+    <!-- div to hold map -->
+    <div id="map-canvas" class="z-depth-5"></div>
 
+    </div>
 
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- footer -->
+    <footer class="page-footer indigo">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Thanks for checking the weather!</h5>
+          </div>
+          <div class="col l4 offset-l2 s12">
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2016 Pancho Escobedo
+        <a class="grey-text text-lighten-4 right" href="portfolio.html">Back to portfolio</a>
+        </div>
+      </div>
+    </footer>
 
     <!-- Load the Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Wm7YvviL8dFXivBh5hTrVPWzJBiq4QY"></script>
 
-    <!-- Script to show address on map -->
     <script type="text/javascript">
     (function() {
         "use strict";
@@ -65,8 +112,8 @@
                 $('#forecast').html('');
             for (var i = 0 ; i < data.list.length; i++) {
                 var div = $('<div>');
-                div.addClass('blocking');
-                div.append('<p>' + data.list[i].temp.min + '/' + data.list[i].temp.max + '</p>');
+                div.addClass('blocking z-depth-4');
+                div.append('<p>' + data.list[i].temp.min + '&deg' + '/' + data.list[i].temp.max + '&deg' + '</p>');
                 div.append('<p>' + '<img src= "http://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png">' + '</p>');
                 div.append('<p>' + data.list[i].weather[0].main + '</p>');
                 div.append('<p>' + 'Humidity: ' + data.list[i].humidity + '</p>');
@@ -123,9 +170,10 @@
                             lat: latitude,
                             lng: longitude
                         };
+
                     map.setCenter(newCenter);
                     marker.setPosition(newCenter);
-                    
+
                 });
 
         };

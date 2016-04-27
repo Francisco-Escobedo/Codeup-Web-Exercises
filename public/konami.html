@@ -10,38 +10,75 @@
     <image src = "/img/konamicode.gif" alt = "The Code" id="konamiPic">
 
     <script>
+    $(document).ready(function() {
         "use strict";
 
             //Sets array and desired string to 
-            var konamikeys = [], konami = "38,38,40,40,37,39,37,39,66,65,13";
+            var konamikeys = {
+                up:   38,
+                down: 40,
+                left: 37,
+                right:39,
+                b:    66,
+                a:    65,
+                enter:13
 
-            $(document).keyup(function(code) {
+            };
 
-                konamikeys.push(code.keyCode);
+            var sequence = [
+                konamikeys.up,
+                konamikeys.up,
+                konamikeys.down,
+                konamikeys.down,
+                konamikeys.left,
+                konamikeys.right,
+                konamikeys.left,
+                konamikeys.right,
+                konamikeys.b,
+                konamikeys.a,
+            ];
 
-                //compares entered string to konami code
-                if ( konamikeys.toString().indexOf(konami) >= 0 ) {
+            var keyIndex=0;
 
-                $(document).unbind('keyup');
-        
-                // konami code worked
-                alert('You have added 30 lives!');
+            $("body").keyup(function(e) {
+                var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
 
-                $('body').css({
-                    'background-image':'url(/img/contra.jpg',
-                    'background-attachment' : 'fixed',
-                    'background-size' : '100%'
+                if (charCode == sequence[keyIndex]) {
+                console.log("hit: " + charCode);
+                keyIndex++;
+                if (keyIndex == sequence.length) {
+                    console.log("A Winner Is You!");
+                    $(document).unbind('keyup');
+            
+                    // konami code worked
+                    alert('You have added 30 lives!');
 
-                });
-                // add timeout
-                $('body').append('<embed src="/sound/contra.mp3" autostart="true" hidden="true" loop="true">');
-                //hides konami picture
-                $('#konamiPic, .heading').hide();
+                    $('body').css({
+                        'background-image':'url(/img/contra.jpg)',
+                        'background-attachment' : 'fixed',
+                        'background-size' : '100%'
+
+                    });
+                    // add timeout
+                    $('body').append('<embed src="/sound/contra.mp3" autostart="true" hidden="true" loop="true">');
+                    //hides konami picture
+                    $('#konamiPic, .heading').hide();
+                        keyIndex = 0;
                 }
+                } else {
+                console.log("miss: " + charCode);
+                keyIndex = 0;
+                }
+
+
+                
+
+
+                
 
             });
 
-    
+    });
     </script>
 
 

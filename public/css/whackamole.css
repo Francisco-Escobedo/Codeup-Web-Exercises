@@ -1,0 +1,63 @@
+/*size of boxes on game board and coloring*/
+.size {
+    width: 200px;
+    height: 200px;
+    padding: 22px;
+    border: 10px solid #EFBBD2;
+    margin: 10px;
+}
+
+/*positions game board*/
+.row {
+    position: relative;
+    bottom: 265px;
+}
+
+/*image of mole that appears in styled divs*/
+.diglett {
+    width: 100px;
+    padding: 40px;
+    margin: 25px;
+    background-image: url(/img/dig.png);
+    background-size: 100%
+}
+
+/*background of page and image for cursor*/
+body {
+    background-image: url(/img/digletbackground.jpg);
+    background-size: 100%;
+    cursor:url("/img/pokeball.png"), auto;
+}
+
+/*position of the button*/
+.btn {
+    position: relative;
+    left: 800px;
+    bottom: 915px;
+}
+
+/*position of score and font size*/
+#score {
+    position: relative;
+    left: 670px;
+    top: 10px;
+    font-size: 50px;
+}
+
+/*position of high score and font size*/
+#highScore {
+    position: relative;
+    left: 900px;
+    bottom: 153px;
+    font-size: 50px;
+}
+
+/*position of timer and font size*/
+#timer {
+    position: relative;
+    left: 670px;
+    bottom: 20px;
+    font-size: 50px;
+}
+
+
