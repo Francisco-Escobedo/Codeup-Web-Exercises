@@ -2,13 +2,15 @@
 
 session_start();
 
+require 'functions.php';
+
 $error = '';
 
 if (isset($_SESSION['logged_in_user'])){
     header('location: authorized.php');
 }
 
-if (!isset($_POST['username']) && !isset($_POST['password'])){
+if (!inputHas('username') && !inputHas('password')){
     $username = '';
     $password = '';
 } else {

@@ -2,7 +2,9 @@
 
 session_start();
 
-if (!isset($_SESSION['logged_in_user'])){
+require 'functions.php';
+
+if (inputHas('logged_in_user')){
     header('location: login.php');
 }
 
@@ -15,7 +17,7 @@ if (!isset($_SESSION['logged_in_user'])){
 </head>
 <body>
     <h2>Authorized </h2>
-    <p> Welcome Back <?=$_SESSION['logged_in_user']?> </p>
+    <p> Welcome Back <?=escape('logged_in_user')?> </p>
     <a href="logout.php">LOGOUT</a>
 </body>
 </html>
