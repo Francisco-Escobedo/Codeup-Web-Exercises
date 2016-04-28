@@ -4,9 +4,7 @@ session_start();
 
 $error = '';
 
-
-
-if ($_SESSION == 'guest'){
+if (isset($_SESSION['logged_in_user'])){
     header('location: authorized.php');
 }
 
@@ -23,7 +21,6 @@ if (!isset($_POST['username']) && !isset($_POST['password'])){
         $error = 'login failed';
     }
 }
-
 
 ?>
 
@@ -50,7 +47,7 @@ if (!isset($_POST['username']) && !isset($_POST['password'])){
 
 </form>
 
-<button>Logout</button>
+<a href="logout.php"> LOGOUT </a>
 
 </body>
 

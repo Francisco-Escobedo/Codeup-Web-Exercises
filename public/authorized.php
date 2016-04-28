@@ -2,7 +2,7 @@
 
 session_start();
 
-if (isset($_SESSION['logged_in_user'])){
+if (!isset($_SESSION['logged_in_user'])){
     header('location: login.php');
 }
 
@@ -16,8 +16,6 @@ if (isset($_SESSION['logged_in_user'])){
 <body>
     <h2>Authorized </h2>
     <p> Welcome Back <?=$_SESSION['logged_in_user']?> </p>
-    <form action="logout.php">
-        <input type="submit" value="Logout">
-    </form>
+    <a href="logout.php">LOGOUT</a>
 </body>
 </html>

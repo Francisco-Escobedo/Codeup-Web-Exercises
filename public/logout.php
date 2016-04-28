@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 function clearSession(){
 
     session_unset();
@@ -11,4 +13,3 @@ function clearSession(){
 
 clearSession();
 
-?>
