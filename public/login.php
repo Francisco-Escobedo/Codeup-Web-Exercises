@@ -1,19 +1,23 @@
 <?php
 
+session_start();
+
 $error = '';
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // $username = $_POST['username'];
-    // $password = $_POST['password'];
-// }
 
+
+if ($_SESSION == 'guest'){
+    header('location: authorized.php');
+}
 
 if (!isset($_POST['username']) && !isset($_POST['password'])){
     $username = '';
     $password = '';
 } else {
-    if ($_POST['username'] == 'guest' & $_POST['password'] == 'password'){
+    if ($_POST['username'] == 'guest' && $_POST['password'] == 'password'){
         header('location: authorized.php');
+        $logged_in_user = $_POST['username'];
+        $_SESSION['logged_in_user'] = $logged_in_user;
         exit();
     } else {
         $error = 'login failed';
@@ -42,9 +46,11 @@ if (!isset($_POST['username']) && !isset($_POST['password'])){
 
     <div><font color="red"><?= $error ?></font><div>
 
-    <input type="submit">
+    <input type="submit"> 
 
 </form>
+
+<button>Logout</button>
 
 </body>
 

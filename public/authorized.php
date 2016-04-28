@@ -1,8 +1,10 @@
 <?php
 
-$username = isset($_POST['username']) ? $_POST['username'] : '';
+session_start();
 
-$password = isset($_POST['password']) ? $_POST['password'] : '';
+if (isset($_SESSION['logged_in_user'])){
+    header('location: login.php');
+}
 
 ?>
 
@@ -13,5 +15,9 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 </head>
 <body>
     <h2>Authorized </h2>
+    <p> Welcome Back <?=$_SESSION['logged_in_user']?> </p>
+    <form action="logout.php">
+        <input type="submit" value="Logout">
+    </form>
 </body>
 </html>
