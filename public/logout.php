@@ -1,15 +1,7 @@
 <?php
 
 session_start();
+require_once '../Auth.php';
 
-function clearSession(){
-
-    session_unset();
-
-    session_destroy();
-
-    header('location: login.php');
-}
-
-clearSession();
+Auth::Logout();
 
