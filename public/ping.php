@@ -1,7 +1,7 @@
 <?php 
 
 require 'functions.php';
-require '../Input.php';
+require_once '../Input.php';
 
 function pageController(){
 
