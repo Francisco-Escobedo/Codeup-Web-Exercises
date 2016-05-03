@@ -1,13 +1,14 @@
 <?php
 
 require 'functions.php';
+require '../Input.php';
 
 function pageController(){
 
-    if (!inputHas('count')){
+    if (!Input::has('count')){
         $count = 0;
     } else {
-        $count = $_GET['count'];
+        $count = Input::get('count');
     }
 
     return ['count' => $count];
