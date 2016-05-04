@@ -20,8 +20,10 @@ class Auth{
             header('Location: authorized.php');
         } elseif (!empty($_REQUEST)
             && ($_REQUEST['username'] !== 'guest' && $_REQUEST['username'] !== '')
-            && (!password_verify($password, Auth::$password))){
+            && (!password_verify($password, Auth::$password)) && $_REQUEST['password'] !== ''){
             self::$error = 'login failed';
+            $failedLogin = new File ('login.txt');
+            $failedLogin->failed($_REQUEST['username']);
         }
 
     }

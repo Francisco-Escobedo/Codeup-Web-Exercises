@@ -26,3 +26,5 @@ User guest logged in 2016-05-04 15:40:00.
 User asdf logged in 2016-05-04 15:41:44.
 User asdfo logged in 2016-05-04 15:41:53.
 User guest logged in 2016-05-04 15:41:56.
+User pasdof logged in 2016-05-04 15:46:59.
+User pasdof failed to log in 2016-05-04 15:46:59.

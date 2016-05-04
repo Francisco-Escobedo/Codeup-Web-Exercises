@@ -16,6 +16,11 @@ class File {
         fwrite($this->handle, 'User '. $username ." logged in $date.". PHP_EOL);
     }
 
+    public function failed($username){
+    $date = date("Y-m-d H:i:s");
+    fwrite($this->handle, 'User '. $username ." failed to log in $date.". PHP_EOL);
+    }
+
     public function close(){
         fclose($this->handle);
     }
