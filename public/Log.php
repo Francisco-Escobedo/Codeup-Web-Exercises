@@ -11,8 +11,9 @@ class File {
         $this->handle = fopen($this->filename, 'a');
     }
 
-    public function append($message){
-        fwrite($this->handle, $message . PHP_EOL);
+    public function append($username){
+        $date = date("Y-m-d H:i:s");
+        fwrite($this->handle, 'User '. $username ." logged in $date.". PHP_EOL);
     }
 
     public function close(){
@@ -25,7 +26,7 @@ class File {
 // class Log {
 
 //     public function __construct($prefix='log') {
-//         $date = date("Y-m-d");
+        // $date = date("Y-m-d");
 //         $this->filename = "$prefix-$date.log";
 //         $this->handle = fopen($this->filename, 'a');
 //     }
