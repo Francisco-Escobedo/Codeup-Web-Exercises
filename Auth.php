@@ -18,7 +18,9 @@ class Auth{
             && password_verify($password, Auth::$password)) {
             $_SESSION['logged_in_user'] = $_REQUEST['username'];
             header('Location: authorized.php');
-        } else {
+        } elseif (!empty($_REQUEST)
+            && ($_REQUEST['username'] !== 'guest' && $_REQUEST['username'] !== '')
+            && (!password_verify($password, Auth::$password))){
             self::$error = 'login failed';
         }
 

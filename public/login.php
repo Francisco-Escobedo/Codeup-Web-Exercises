@@ -17,8 +17,6 @@ if (null == isset($_REQUEST['username'])
 
 Auth::Attempt($_REQUEST['username'], $_REQUEST['password']);
 
-
-
 ?>
 
 <!DOCTYPE html>
