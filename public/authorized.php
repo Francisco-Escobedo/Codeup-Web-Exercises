@@ -5,8 +5,10 @@ session_start();
 require '../Input.php';
 require '../Auth.php';
 
-if (Input::has('logged_in_user')){
-    // header('location: login.php');
+if (Auth::user() == 'guest'){
+
+} else {
+    header('location: login.php');
 }
 
 ?>

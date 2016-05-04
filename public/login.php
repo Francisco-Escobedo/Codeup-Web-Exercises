@@ -9,7 +9,14 @@ $error = '';
 
 Auth::Check();
 
+if (null == isset($_REQUEST['username'])
+    && null == isset($_REQUEST['password'])){
+    $_REQUEST['username'] = '';
+    $_REQUEST['password'] = '';
+} 
+
 Auth::Attempt($_REQUEST['username'], $_REQUEST['password']);
+
 
 ?>
 
