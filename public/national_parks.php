@@ -35,17 +35,32 @@ extract(parksCounter($dbc));
 <html>
 <head>
     <title>National Parks</title>
+
+
 </head>
 <body>
 <h1> National Parks </h1>
 <p> Page offset is: <?= $offset ?> </p>
 <p> Total number of parks is: <?= count($NumberOfParks) ?> </p>
-<?php foreach($parks as $park){?> 
-    <h2> <?= $park['name']; ?> </h2>
-    <p> Location: <?= $park['location']; ?></p>
-    <p>Date Established: <?= $park['date_established']; ?></p>
-    <p>Area (in Acres): <?= $park['area_in_acres'];} ?></p>
+
+<table style="width:100%">
+    <tr> 
+        <th> Name </th>
+        <th> Location </th>
+        <th> Date Established </th>
+        <th> Area (in Acres) </th>
+    </tr>
+     <?php foreach($parks as $park){?> 
+    <tr>
+        <td> <?= $park['name']; ?> </td>
+        <td> <?= $park['location']; ?> </td>
+        <td> <?= $park['date_established']; ?> </td>
+        <td> <?= $park['area_in_acres'];} ?> </td>
+    </tr>
+</table>
+
     <?php if($offset!=0){?> <a href="?offset=<?=$offset-4?>">Previous</a><?php } ?>
     <?php if ($offset+4<count($NumberOfParks)){?><a href="?offset=<?=$offset+4?>">Next</a><?php } ?>
 </body>
 </html>
+
