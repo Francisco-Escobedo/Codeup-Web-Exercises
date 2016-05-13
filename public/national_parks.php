@@ -36,6 +36,11 @@ extract(parksCounter($dbc));
 <head>
     <title>National Parks</title>
 
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 </head>
 <body>
@@ -43,7 +48,7 @@ extract(parksCounter($dbc));
 <p> Page offset is: <?= $offset ?> </p>
 <p> Total number of parks is: <?= count($NumberOfParks) ?> </p>
 
-<table style="width:100%">
+<table class="bordered striped">
     <tr> 
         <th> Name </th>
         <th> Location </th>
@@ -59,8 +64,8 @@ extract(parksCounter($dbc));
     </tr>
 </table>
 
-    <?php if($offset!=0){?> <a href="?offset=<?=$offset-4?>">Previous</a><?php } ?>
-    <?php if ($offset+4<count($NumberOfParks)){?><a href="?offset=<?=$offset+4?>">Next</a><?php } ?>
+    <?php if($offset!=0){?> <a href="?offset=<?=$offset-4?>" class="waves-effect waves-light btn" >Previous</a><?php } ?>
+    <?php if ($offset+4<count($NumberOfParks)){?><a href="?offset=<?=$offset+4?>" class="waves-effect waves-light btn">Next</a><?php } ?>
 </body>
 </html>
 
