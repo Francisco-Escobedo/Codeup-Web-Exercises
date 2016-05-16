@@ -17,6 +17,8 @@
 </head>
 <body class = "container">
 <h1> New National Park </h1>
+<p> *Please note: All fields must be populated for park to submit.</p>
+<p> *If Date Established or Areas are not entered as numerical values, they will display as zeros in National Parks table.</p>
     <div class="row">
         <form class="col s12" action="national_parks.php" method="GET">
             <div class="row">
