@@ -18,15 +18,15 @@ if(Input::has('park_name')&&Input::has('location')&&Input::has('date_established
     $textArea=Input::get('textarea');
 
         if ($parkName!=='' && $location!=='' && $dateEstablished!=='' && $areaInAcres!=='' && $textArea!==''){
-        $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
+                $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 
-        $stmt->bindValue(':name', htmlspecialchars($parkName), PDO::PARAM_STR);
-        $stmt->bindValue(':location', htmlspecialchars($location), PDO::PARAM_STR);
-        $stmt->bindValue(':date_established', (int) htmlspecialchars($dateEstablished), PDO::PARAM_INT);
-        $stmt->bindValue(':area_in_acres', (float) htmlspecialchars($areaInAcres), PDO::PARAM_STR);
-        $stmt->bindValue(':description', htmlspecialchars($textArea), PDO::PARAM_STR);
+                $stmt->bindValue(':name', htmlspecialchars($parkName), PDO::PARAM_STR);
+                $stmt->bindValue(':location', htmlspecialchars($location), PDO::PARAM_STR);
+                $stmt->bindValue(':date_established', (int) htmlspecialchars($dateEstablished), PDO::PARAM_INT);
+                $stmt->bindValue(':area_in_acres', (float) htmlspecialchars($areaInAcres), PDO::PARAM_STR);
+                $stmt->bindValue(':description', htmlspecialchars($textArea), PDO::PARAM_STR);
 
-        $stmt->execute();
+                $stmt->execute();
         }
 }
 
@@ -95,7 +95,9 @@ extract(parksCounter($dbc));
     </table>
 
     <?php if($offset!=0){?> <a href="?offset=<?=$offset-4?>" class="waves-effect waves-light btn" >Previous</a><?php } ?> 
+    
     <a href="national_parks_form.php" class="waves-effect waves-light btn">Add New Park</a>
+
     <?php if ($offset+4<count($NumberOfParks)){?><a href="?offset=<?=$offset+4?>" class="waves-effect waves-light btn">Next</a><?php } ?>
 
 
