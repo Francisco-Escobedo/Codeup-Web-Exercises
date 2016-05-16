@@ -95,7 +95,7 @@ extract(parksCounter($dbc));
     </table>
 
     <?php if($offset!=0){?> <a href="?offset=<?=$offset-4?>" class="waves-effect waves-light btn" >Previous</a><?php } ?> 
-    
+
     <a href="national_parks_form.php" class="waves-effect waves-light btn">Add New Park</a>
 
     <?php if ($offset+4<count($NumberOfParks)){?><a href="?offset=<?=$offset+4?>" class="waves-effect waves-light btn">Next</a><?php } ?>
