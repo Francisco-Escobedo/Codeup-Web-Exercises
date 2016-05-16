@@ -2,12 +2,32 @@
 
 require '../db_credentials.php';
 require '../db_connect.php';
+require '../Input.php';
 
-if (isset($_GET['offset'])){
-    $offset=$_GET['offset'];
+if (Input::has('offset')){
+    $offset=Input::get('offset');
 } else {
     $offset=0;
 }
+
+if(Input::has('park_name')&&Input::has('location')&&Input::has('date_established')&&Input::has('area_in_acres')&&Input::has('textarea')){
+    $parkName=Input::get('park_name');
+    $location=Input::get('location');
+    $dateEstablished=Input::get('date_established');
+    $areaInAcres=Input::get('area_in_acres');
+    $textArea=Input::get('textarea');
+
+    $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
+
+    $stmt->bindValue(':name', $parkName, PDO::PARAM_STR);
+    $stmt->bindValue(':location', $location, PDO::PARAM_STR);
+    $stmt->bindValue(':date_established', (int) $dateEstablished, PDO::PARAM_INT);
+    $stmt->bindValue(':area_in_acres', (float) $areaInAcres, PDO::PARAM_STR);
+    $stmt->bindValue(':description', $textArea, PDO::PARAM_STR);
+
+    $stmt->execute();
+}
+
 
 function parksCounter($dbc){
     $parkCount=[];
@@ -19,8 +39,7 @@ function parksCounter($dbc){
     return $parkCount;
 }
 
-function pageController($dbc, $offset)
-{
+function pageController($dbc, $offset){
     $data = [];
     $stmt = $dbc->prepare('SELECT * FROM national_parks LIMIT :limCount OFFSET :offCount');
     $stmt->bindValue(':limCount', 4, PDO::PARAM_INT);
@@ -50,28 +69,32 @@ extract(parksCounter($dbc));
 
 </head>
 <body background="img/washpark.jpg" class="container">
+
 <h1> National Parks </h1>
 
-<table class="bordered highlight striped white">
-    <tr> 
-        <th> Name </th>
-        <th> Location </th>
-        <th> Date Established </th>
-        <th> Area (in Acres) </th>
-        <th> Description </th>
-    </tr>
-     <?php foreach($parks as $park){?> 
-    <tr>
-        <td> <?= $park['name']; ?> </td>
-        <td> <?= $park['location']; ?> </td>
-        <td> <?= $park['date_established']; ?> </td>
-        <td> <?= $park['area_in_acres']; ?> </td>
-        <td> <?=$park['description'];} ?> </td>
-    </tr>
-</table>
+    <table class="bordered highlight striped white">
+        <tr> 
+            <th> Name </th>
+            <th> Location </th>
+            <th> Date Established </th>
+            <th> Area (in Acres) </th>
+            <th> Description </th>
+        </tr>
+         <?php foreach($parks as $park){?> 
+        <tr>
+            <td> <?= $park['name']; ?> </td>
+            <td> <?= $park['location']; ?> </td>
+            <td> <?= $park['date_established']; ?> </td>
+            <td> <?= $park['area_in_acres']; ?> </td>
+            <td> <?=$park['description'];} ?> </td>
+        </tr>
+    </table>
 
-    <?php if($offset!=0){?> <a href="?offset=<?=$offset-4?>" class="waves-effect waves-light btn" >Previous</a><?php } ?>
+    <?php if($offset!=0){?> <a href="?offset=<?=$offset-4?>" class="waves-effect waves-light btn" >Previous</a><?php } ?> 
+    <a href="national_parks_form.php" class="waves-effect waves-light btn">Add New Park</a>
     <?php if ($offset+4<count($NumberOfParks)){?><a href="?offset=<?=$offset+4?>" class="waves-effect waves-light btn">Next</a><?php } ?>
+
+
 </body>
 </html>
 

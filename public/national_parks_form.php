@@ -1,0 +1,48 @@
+<?php
+
+
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+</head>
+<body class = "container">
+<h1> New National Park </h1>
+    <div class="row">
+        <form class="col s12" action="national_parks.php" method="GET">
+            <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="National Park Name" name="park_name" type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                  <input placeholder="Location" name="location" type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                  <input placeholder="Date Established (in YYYY format)" name="date_established" type="text" class="validate">
+                </div>
+                <div class="input-field col s6">
+                  <input placeholder="Area in Acres (no commas eg. 2903.20)" name="area_in_acres" type="text" class="validate">
+                </div>
+                <div class="input-field col s12">
+                  <textarea name="textarea" class="materialize-textarea"></textarea>
+                  <label for="textarea">Park Description</label>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit">Submit
+            </button>
+
+        </form>
+    </div>
+
+</body>
+</html>
