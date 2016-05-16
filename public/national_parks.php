@@ -43,10 +43,8 @@ extract(parksCounter($dbc));
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 </head>
-<body background="img/washpark.jpg">
+<body background="img/washpark.jpg" class="container">
 <h1> National Parks </h1>
-<p> Page offset is: <?= $offset ?> </p>
-<p> Total number of parks is: <?= count($NumberOfParks) ?> </p>
 
 <table class="bordered highlight striped white">
     <tr> 
