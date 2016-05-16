@@ -14,6 +14,8 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
+  <link rel="icon" href="/img/weatheri.png">
+
 </head>
 <body class = "container">
 <h1> New National Park </h1>
@@ -39,6 +41,9 @@
                   <label for="textarea">Park Description</label>
                 </div>
             </div>
+
+            <button href="national_parks.php" class="btn waves-effect waves-light">Back to National Parks Table
+            </button>
 
             <button class="btn waves-effect waves-light" type="submit">Submit
             </button>

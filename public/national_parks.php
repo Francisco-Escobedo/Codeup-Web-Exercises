@@ -16,7 +16,7 @@ if(Input::has('park_name')&&Input::has('location')&&Input::has('date_established
     $dateEstablished=Input::get('date_established');
     $areaInAcres=Input::get('area_in_acres');
     $textArea=Input::get('textarea');
-    
+
         if ($parkName!=='' && $location!=='' && $dateEstablished!=='' && $areaInAcres!=='' && $textArea!==''){
         $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 
@@ -68,6 +68,8 @@ extract(parksCounter($dbc));
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+  <link rel="icon" href="/img/weatheri.png">
 
 </head>
 <body background="img/washpark.jpg" class="container">
