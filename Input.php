@@ -24,7 +24,7 @@ class Input
     public static function get($key, $default = null)
     {
         // TODO: Fill in this function
-        return inputHas($key) ? $_REQUEST[$key] : null;
+        return Input::has($key) ? $_REQUEST[$key] : null;
     }
 
     ///////////////////////////////////////////////////////////////////////////
