@@ -11,8 +11,10 @@ if (isset($_GET['offset'])){
 
 function parksCounter($dbc){
     $parkCount=[];
-    $total = $dbc->query('SELECT * FROM national_parks');
+    $total = $dbc->prepare('SELECT * FROM national_parks');
+    $total->execute();
     $parkCount['NumberOfParks']=$total->fetchAll(PDO::FETCH_ASSOC);
+     
 
     return $parkCount;
 }
@@ -20,7 +22,11 @@ function parksCounter($dbc){
 function pageController($dbc, $offset)
 {
     $data = [];
-    $stmt = $dbc->query('SELECT * FROM national_parks LIMIT 4 OFFSET '.$offset);
+    $stmt = $dbc->prepare('SELECT * FROM national_parks LIMIT :limCount OFFSET :offCount');
+    $stmt->bindValue(':limCount', 4, PDO::PARAM_INT);
+    $stmt->bindValue(':offCount', (int) $offset, PDO::PARAM_INT);
+    $stmt->execute();
+
     $data['parks']=$stmt->fetchAll(PDO::FETCH_ASSOC);
     
     return $data;
@@ -52,13 +58,15 @@ extract(parksCounter($dbc));
         <th> Location </th>
         <th> Date Established </th>
         <th> Area (in Acres) </th>
+        <th> Description </th>
     </tr>
      <?php foreach($parks as $park){?> 
     <tr>
         <td> <?= $park['name']; ?> </td>
         <td> <?= $park['location']; ?> </td>
         <td> <?= $park['date_established']; ?> </td>
-        <td> <?= $park['area_in_acres'];} ?> </td>
+        <td> <?= $park['area_in_acres']; ?> </td>
+        <td> <?=$park['description'];} ?> </td>
     </tr>
 </table>
 
