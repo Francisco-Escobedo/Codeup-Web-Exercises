@@ -42,7 +42,7 @@ class Log {
     public function __construct($prefix='log') {
         $date = date("Y-m-d");
         $this->filename = "$prefix-$date.log";
-        if (is_writeable($this->filename)){
+        if (touch($this->filename)&&is_writeable($this->filename)){
             echo "The $this->filename has been appended";
         } else {
             echo "The file is not writable";
