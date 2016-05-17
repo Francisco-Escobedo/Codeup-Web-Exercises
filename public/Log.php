@@ -1,60 +1,87 @@
 <?php
 
-class File {
+// class File {
 
-    public $filename;
+//     private $filename;
 
-    public $handle;
+//     private $handle;
 
-    public function __construct($name){
-        $this->filename = "$name";
-        $this->handle = fopen($this->filename, 'a');
+//     protected function __construct($name)
+//     {
+//         $this->filename = "$name";
+//         $this->handle = fopen($this->filename, 'a');
+//     }
+
+//     public function checkString()
+//     {
+//         return is_string($this->filename);
+//     }
+
+//     public function append($username)
+//     {
+//         $date = date("Y-m-d H:i:s");
+//         fwrite($this->handle, 'User '. $username ." logged in $date.". PHP_EOL);
+//     }
+
+//     public function failed($username)
+//     {
+//     $date = date("Y-m-d H:i:s");
+//     fwrite($this->handle, 'User '. $username ." failed to log in $date.". PHP_EOL);
+//     }
+
+//     public function close()
+//     {
+//         fclose($this->handle);
+//     }
+
+// }
+
+
+class Log {
+
+    public function __construct($prefix='log') {
+        $date = date("Y-m-d");
+        $this->filename = "$prefix-$date.log";
+        if (is_writeable($this->filename)){
+            echo "The $this->filename has been appended";
+        } else {
+            echo "The file is not writable";
+        }
     }
 
-    public function append($username){
-        $date = date("Y-m-d H:i:s");
-        fwrite($this->handle, 'User '. $username ." logged in $date.". PHP_EOL);
+    private function checkString(){
+        if(is_string($this->filename)){
+            $this->handle = fopen($this->filename, 'a');
+        }
     }
 
-    public function failed($username){
-    $date = date("Y-m-d H:i:s");
-    fwrite($this->handle, 'User '. $username ." failed to log in $date.". PHP_EOL);
+    public function triggerCheckString(){
+        $this->checkString();
     }
 
-    public function close(){
+    public function __destruct() {
         fclose($this->handle);
+    }
+
+    private $filename;
+
+    private $handle;
+
+    public function logMessage($logLevel, $message){
+        $today = date("Y-m-d H:i:s");
+        fwrite($this->handle, $today . ' ' . $logLevel . ' ' . $message . PHP_EOL);
+    }
+
+    public function info($message){
+        $this->logMessage('[INFO]', $message);
+    }
+
+    public function error($message){
+        $this->logMessage('[ERROR]', $message);
     }
 
 }
 
-
-// class Log {
-
-//     public function __construct($prefix='log') {
-        // $date = date("Y-m-d");
-//         $this->filename = "$prefix-$date.log";
-//         $this->handle = fopen($this->filename, 'a');
-//     }
-
-//     public function __destruct() {
-//         fclose($this->handle);
-//     }
-
-//     public $filename;
-
-//     public $handle;
-
-//     public function logMessage($logLevel, $message){
-//         $today = date("Y-m-d H:i:s");
-//         fwrite($this->handle, $today . ' ' . $logLevel . ' ' . $message . PHP_EOL);
-//     }
-
-//     public function info($message){
-//         $this->logMessage('[INFO]', $message);
-//     }
-
-//     public function error($message){
-//         $this->logMessage('[ERROR]', $message);
-//     }
-
-// }
+$flog = new Log;
+$flog->triggerCheckString();
+$flog->info("This is an info message.");
