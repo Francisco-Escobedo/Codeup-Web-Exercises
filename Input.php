@@ -27,6 +27,26 @@ class Input
         return Input::has($key) ? $_REQUEST[$key] : null;
     }
 
+
+    public static function getString($key)
+    {
+        if(Input::has($key) && is_string(Input::get($key))){
+            Input::get($key);
+        } else {
+            throw new Exception ('Value does not exist for $key or it is not a string');
+        }
+    }
+
+
+    public static function getNumber($key)
+    {
+        if(Input::has($key) && is_int(Input::get($key))){
+            self::get($key);
+        } else {
+            throw new Exception ('Value does not exist for $key or it is not an integer')
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
     // The Input class should not ever be instantiated, so we prevent the    //
