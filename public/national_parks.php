@@ -13,7 +13,7 @@ if (Input::has('offset')){
 if(Input::has('park_name')&&Input::has('location')&&Input::has('date_established')&&Input::has('area_in_acres')&&Input::has('textarea')){
     $parkName=Input::getString('park_name');
     $location=Input::getString('location');
-    $dateEstablished=Input::getNumber('date_established');
+    $dateEstablished=Input::getDate('date_established');
     $areaInAcres=Input::getNumber('area_in_acres');
     $textArea=Input::getString('textarea');
 

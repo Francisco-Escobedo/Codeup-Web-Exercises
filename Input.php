@@ -49,6 +49,17 @@ class Input
         }
     }
 
+    public static function getDate($key)
+    {
+        if(self::get($key)!=null && self::get($key)>1000 && self::get($key)<2100){
+           return self::get($key);
+           // $d = new DateTime();
+           // return $d->format(Y);
+        } else {
+            throw new Exception ('Date established does not exist or is not within acceptable date range');
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
     // The Input class should not ever be instantiated, so we prevent the    //
