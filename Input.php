@@ -40,7 +40,7 @@ class Input
 
     public static function getNumber($key)
     {
-        if(Input::has($key) && is_int(Input::get($key))){
+        if(Input::has($key) && is_int((int) Input::get($key))){
             self::get($key);
         } else {
             throw new Exception ('Value does not exist for $key or it is not an integer')
