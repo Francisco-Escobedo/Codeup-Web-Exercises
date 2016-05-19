@@ -30,7 +30,7 @@ class Input
 
     public static function getString($key)
     {
-        if(self::get($key)!=null && is_string(self::get($key))){
+        if(self::get($key)!=null && is_string(self::get($key)) && ctype_alnum(self::get($key))){
            return self::get($key);
         } else {
             throw new Exception ('Value does not exist for $key or it is not a string');
