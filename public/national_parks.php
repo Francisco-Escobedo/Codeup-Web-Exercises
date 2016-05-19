@@ -11,11 +11,11 @@ if (Input::has('offset')){
 }
 
 if(Input::has('park_name')&&Input::has('location')&&Input::has('date_established')&&Input::has('area_in_acres')&&Input::has('textarea')){
-    $parkName=Input::get('park_name');
-    $location=Input::get('location');
-    $dateEstablished=Input::get('date_established');
-    $areaInAcres=Input::get('area_in_acres');
-    $textArea=Input::get('textarea');
+    $parkName=Input::getString('park_name');
+    $location=Input::getString('location');
+    $dateEstablished=Input::getNumber('date_established');
+    $areaInAcres=Input::getNumber('area_in_acres');
+    $textArea=Input::getString('textarea');
 
     if ($parkName!=='' && $location!=='' && $dateEstablished!=='' && $areaInAcres!=='' && $textArea!==''){
         $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
