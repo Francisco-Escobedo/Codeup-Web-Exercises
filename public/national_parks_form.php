@@ -39,13 +39,6 @@ function pageController($dbc) {
   }
 
   if(empty($message)){
-    // $parkName=Input::getString('park_name');
-    // $location=Input::getString('location');
-    // $dateEstablished=Input::getNumber('date_established');
-    // $areaInAcres=Input::getNumber('area_in_acres');
-    // $textArea=Input::getString('textarea');
-
-    // if ($parkName!=='' && $location!=='' && $dateEstablished!=='' && $areaInAcres!=='' && $textArea!==''){
         $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 
         $stmt->bindValue(':name', htmlspecialchars($parkName), PDO::PARAM_STR);
@@ -58,7 +51,6 @@ function pageController($dbc) {
 
         header('location: national_parks.php');
         die();
-    // }
   }
 
   return [
@@ -97,19 +89,37 @@ if(!empty($_POST)){
         <form class="col s12" action="national_parks_form.php" method="POST">
             <div class="row">
                 <div class="input-field col s6">
-                  <input placeholder="National Park Name" name="park_name" type="text" class="validate">
+                  <input placeholder="National Park Name" 
+                  name="park_name" 
+                  type="text" 
+                  class="validate" 
+                  value="<?php if(!empty($message)){echo Input::get('park_name');} ?>">
                 </div>
                 <div class="input-field col s6">
-                  <input placeholder="Location" name="location" type="text" class="validate">
+                  <input placeholder="Location" 
+                  name="location" 
+                  type="text" 
+                  class="validate" 
+                  value="<?php if(!empty($message)){echo Input::get('location');} ?>">
                 </div>
                 <div class="input-field col s6">
-                  <input placeholder="Date Established (in YYYY format)" name="date_established" type="text" class="validate">
+                  <input placeholder="Date Established (in YYYY format)" 
+                  name="date_established" 
+                  type="text" 
+                  class="validate" 
+                  value="<?php if(!empty($message)){echo Input::get('date_established');} ?>">
                 </div>
                 <div class="input-field col s6">
-                  <input placeholder="Area in Acres (no commas eg. 2903.20)" name="area_in_acres" type="text" class="validate">
+                  <input placeholder="Area in Acres (no commas eg. 2903.20)" 
+                  name="area_in_acres" 
+                  type="text" 
+                  class="validate" 
+                  value="<?php if(!empty($message)){echo Input::get('area_in_acres');} ?>">
                 </div>
                 <div class="input-field col s12">
-                  <textarea name="textarea" class="materialize-textarea"></textarea>
+                  <textarea name="textarea" 
+                  class="materialize-textarea" 
+                  > <?php if(!empty($message)){echo Input::get('textarea');} ?> </textarea>
                   <label for="textarea">Park Description</label>
                 </div>
             </div>

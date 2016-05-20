@@ -34,7 +34,7 @@ class Input
             !is_numeric(self::get($key))){
            return self::get($key);
         } else {
-            throw new Exception ('Value does not exist for $key or it is not a string');
+            throw new Exception ('Value does not exist for Input or it is not a string');
         }
     }
 
@@ -46,7 +46,7 @@ class Input
         {
             return self::get($key);
         } else {
-            throw new Exception ('Value does not exist for $key or it is not an integer');
+            throw new Exception ('Value does not exist for Input or it is not an integer');
         }
     }
 
