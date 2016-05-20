@@ -10,33 +10,11 @@ if (Input::has('offset')){
     $offset=0;
 }
 
-if(Input::has('park_name')&&Input::has('location')&&Input::has('date_established')&&Input::has('area_in_acres')&&Input::has('textarea')){
-    $parkName=Input::getString('park_name');
-    $location=Input::getString('location');
-    $dateEstablished=Input::getDate('date_established');
-    $areaInAcres=Input::getNumber('area_in_acres');
-    $textArea=Input::getString('textarea');
-
-    if ($parkName!=='' && $location!=='' && $dateEstablished!=='' && $areaInAcres!=='' && $textArea!==''){
-        $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
-
-        $stmt->bindValue(':name', htmlspecialchars($parkName), PDO::PARAM_STR);
-        $stmt->bindValue(':location', htmlspecialchars($location), PDO::PARAM_STR);
-        $stmt->bindValue(':date_established', (int) htmlspecialchars($dateEstablished), PDO::PARAM_INT);
-        $stmt->bindValue(':area_in_acres', (float) htmlspecialchars($areaInAcres), PDO::PARAM_STR);
-        $stmt->bindValue(':description', htmlspecialchars($textArea), PDO::PARAM_STR);
-
-        $stmt->execute();
-    }
-}
-
-
 function parksCounter($dbc){
     $parkCount=[];
     $total = $dbc->prepare('SELECT * FROM national_parks');
     $total->execute();
     $parkCount['NumberOfParks']=$total->fetchAll(PDO::FETCH_ASSOC);
-     
 
     return $parkCount;
 }
