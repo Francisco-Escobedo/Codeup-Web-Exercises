@@ -30,7 +30,8 @@ class Input
 
     public static function getString($key)
     {
-        if(self::get($key)!=null && is_string(self::get($key)) && ctype_alnum(self::get($key))){
+        if(self::get($key)!=null && is_string(self::get($key)) && 
+            !is_numeric(self::get($key))){
            return self::get($key);
         } else {
             throw new Exception ('Value does not exist for $key or it is not a string');
@@ -49,12 +50,14 @@ class Input
         }
     }
 
+    protected static $d;
+
     public static function getDate($key)
     {
         if(self::get($key)!=null && self::get($key)>1000 && self::get($key)<2100){
-           return self::get($key);
-           // $d = new DateTime();
-           // return $d->format(Y);
+            return self::get($key);
+            self::$d = new DateTime();
+            // return $d->format(Y);
         } else {
             throw new Exception ('Date established does not exist or is not within acceptable date range');
         }
