@@ -1,5 +1,7 @@
 <?php
 
+class DateRangeException extends Exception { }
+
 class Input
 {
     /**
