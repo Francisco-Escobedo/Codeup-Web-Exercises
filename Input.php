@@ -44,7 +44,7 @@ class Input
             throw new OutOfRangeException ('Key value is missing from input');
         }
 
-        if(is_numeric($key)){
+        if(is_numeric($key) || !ctype_alnum($key)){
             throw new DomainException ('Value wrong data type');
         }
 
