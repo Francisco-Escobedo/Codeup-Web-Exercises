@@ -1,11 +1,5 @@
 <?php
 
-class InvalidArgumentException extends Exception;
-class OutOfRangeException extends Exception;
-class DomainException extends Exception;
-class LengthException extends Exception;
-class RangeException extends Exception;
-
 class Input
 {
     /**
@@ -36,7 +30,7 @@ class Input
 
     public static function getString($key, $min=null, $max=null)
     {
-        if(!string($key) || !is_numeric($min) || !is_numeric($max)){
+        if(!is_string($key) || !is_numeric($min) || !is_numeric($max)){
             throw new InvalidArgumentException ('Invalid entry into a field expecting string followed by integer inputs for argument');
         }
 
@@ -44,12 +38,12 @@ class Input
             throw new OutOfRangeException ('Key value is missing from input');
         }
 
-        if(is_numeric($key) || !ctype_alnum($key)){
-            throw new DomainException ('Value wrong data type');
+        if(is_numeric($key)){
+            throw new DomainException ('Value wrong data type, expecting string');
         }
 
         if(strlen($key)<$min || strlen($key)>$max){
-            throw new LengthException ('String shorter or longer than accepted length')
+            throw new LengthException ('String shorter or longer than accepted length');
         }
 
         if(self::get($key)!=null && is_string(self::get($key)) && 
@@ -63,20 +57,20 @@ class Input
 
     public static function getNumber($key, $min=null, $max=null)
     {
-        if(!string($key) || !is_numeric($min) || !is_numeric($max)){
+        if(!is_string($key) || !is_numeric($min) || !is_numeric($max)){
             throw new InvalidArgumentException ('Invalid entry into a field expecting numeric characters string followed by integer inputs for argument');
         }
 
-        if(empty($key){
+        if(empty($key)){
             throw new OutOfRangeException ('Key value is missing from input');
         }   
 
-        if(!is_numeric($key)){
-            throw new DomainException ('Value wrong data type');
+        if(is_numeric($key)){
+            throw new DomainException ('Value wrong data type, expecting number');
         }
 
         if($key<$min || $key>$max){
-            throw new RangeException ('Numeric value smaller or longer than accepted range')
+            throw new RangeException ('Numeric value smaller or longer than accepted range');
         }
 
         if(self::get($key)!=null &&

@@ -51,7 +51,7 @@ function pageController($dbc) {
   }
 
   try{
-    $areaInAcres=Input::getNumber('area_in_acres', 1, 9999999999);
+    $areaInAcres=Input::getNumber('area_in_acres', 0, 9999999999);
   } catch (InvalidArgumentException $e){
     $message[]=$e->getMessage();
   } catch (OutOfRangeException $e){
@@ -65,7 +65,7 @@ function pageController($dbc) {
   }
 
   try{
-    $dateEstablished=Input::getNumber('date_established', 1800, 9999);
+    $dateEstablished=Input::getNumber('date_established', 0, 9999);
   } catch (InvalidArgumentException $e){
     $message[]=$e->getMessage();
   } catch (OutOfRangeException $e){
@@ -159,7 +159,7 @@ if(!empty($_POST)){
                 <div class="input-field col s12">
                   <textarea name="textarea" 
                   class="materialize-textarea" 
-                  > <?php if(!empty($message)){echo Input::get('textarea');} ?> </textarea>
+                  > <?php if(!empty($message)){echo Input::get('textarea');}?> </textarea>
                   <label for="textarea">Park Description</label>
                 </div>
             </div>
