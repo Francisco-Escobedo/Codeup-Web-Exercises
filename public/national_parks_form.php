@@ -9,31 +9,71 @@ function pageController($dbc) {
   $message=[];
 
   try{
-    $parkName=Input::getString('park_name');
+    $parkName=Input::getString('park_name', 3, 200);
+  } catch (InvalidArgumentException $e){
+    $message[]=$e->getMessage();
+  } catch (OutOfRangeException $e){
+    $message[]=$e->getMessage();
+  } catch (DomainException $e){
+    $message[]=$e->getMessage();
+  } catch (LengthException $e){
+    $message[]=$e->getMessage();
   } catch (Exception $e){
     $message[]=$e->getMessage();
   }
 
   try{
-    $location=Input::getString('location');
+    $location=Input::getString('location', 3, 200);
+  } catch (InvalidArgumentException $e){
+    $message[]=$e->getMessage();
+  } catch (OutOfRangeException $e){
+    $message[]=$e->getMessage();
+  } catch (DomainException $e){
+    $message[]=$e->getMessage();
+  } catch (LengthException $e){
+    $message[]=$e->getMessage();
   } catch (Exception $e){
     $message[]=$e->getMessage();
   }
 
   try{
-    $textArea=Input::getString('textarea');
+    $textArea=Input::getString('textarea', 3, 2000);
+  } catch (InvalidArgumentException $e){
+    $message[]=$e->getMessage();
+  } catch (OutOfRangeException $e){
+    $message[]=$e->getMessage();
+  } catch (DomainException $e){
+    $message[]=$e->getMessage();
+  } catch (LengthException $e){
+    $message[]=$e->getMessage();
   } catch (Exception $e){
     $message[]=$e->getMessage();
   }
 
   try{
-    $areaInAcres=Input::getNumber('area_in_acres');
+    $areaInAcres=Input::getNumber('area_in_acres', 1, 9999999999);
+  } catch (InvalidArgumentException $e){
+    $message[]=$e->getMessage();
+  } catch (OutOfRangeException $e){
+    $message[]=$e->getMessage();
+  } catch (DomainException $e){
+    $message[]=$e->getMessage();
+  } catch (RangeException $e){
+    $message[]=$e->getMessage();
   } catch (Exception $e){
     $message[]=$e->getMessage();
   }
 
-    try{
-    $dateEstablished=Input::getNumber('date_established');
+  try{
+    $dateEstablished=Input::getNumber('date_established', 1800, 9999);
+  } catch (InvalidArgumentException $e){
+    $message[]=$e->getMessage();
+  } catch (OutOfRangeException $e){
+    $message[]=$e->getMessage();
+  } catch (DomainException $e){
+    $message[]=$e->getMessage();
+  } catch (RangeException $e){
+    $message[]=$e->getMessage();
   } catch (Exception $e){
     $message[]=$e->getMessage();
   }

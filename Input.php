@@ -36,8 +36,8 @@ class Input
 
     public static function getString($key, $min=null, $max=null)
     {
-        if(string($key) || !is_numeric($min) || !is_numeric($max)){
-            throw new InvalidArgumentException ('Invalid entry into a field expecting numeric characters (integers)');
+        if(!string($key) || !is_numeric($min) || !is_numeric($max)){
+            throw new InvalidArgumentException ('Invalid entry into a field expecting string followed by integer inputs for argument');
         }
 
         if(empty($key)){
@@ -63,8 +63,8 @@ class Input
 
     public static function getNumber($key, $min=null, $max=null)
     {
-        if(string($key) || !is_numeric($min) || !is_numeric($max)){
-            throw new InvalidArgumentException ('Invalid entry into a field expecting numeric characters (integers)');
+        if(!string($key) || !is_numeric($min) || !is_numeric($max)){
+            throw new InvalidArgumentException ('Invalid entry into a field expecting numeric characters string followed by integer inputs for argument');
         }
 
         if(empty($key){
