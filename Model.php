@@ -21,7 +21,8 @@ abstract class Model
     {
         self::dbConnect();
 
-        // @TODO: Initialize the $attributes property with the passed value
+        // @TODO: Initialize the $attributes property with the passed value 
+        $this->attributes = $attributes;
     }
 
     /**
@@ -62,16 +63,37 @@ abstract class Model
     public function __set($name, $value)
     {
         // @TODO: Store name/value pair in attributes array
-        $attributes = $this->attributes[$name];
-        $attributes = $this->attributes[$value];
+        $this->attributes[$name] = $value;
+
+        if ($name == 'password')
+        {
+                $value = password_hash($value, PASSWORD_DEFAULT);
+        }
+        
     }
 
     /** Store the object in the database */
     public function save()
     {
         // @TODO: Ensure there are values in the attributes array before attempting to save
-
+        if(!empty($this->attributes)){
+            if(isset($this->attributes['id'])){
+                $this->update();
+            } else {
+                $this->insert();
+            }
+        }
+            
         // @TODO: Call the proper database method: if the `id` is set this is an update, else it is a insert
+    }
+
+    public function delete($id)
+    {
+        $query='DELETE FROM'. self::$tables .'WHERE id = :id';
+        $stmt = self::$dbc->prepare($query);
+
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 
     /**
